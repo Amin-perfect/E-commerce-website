@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXE — Ultra-Premium Shopping Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">LUXE</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-icon">✦</div>
+  <div class="toast-text">
+    <div class="toast-title" id="toast-title">Added to Cart</div>
+    <div class="toast-msg" id="toast-msg">Item successfully added</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-logo" onclick="showPage('home')">LUX<span>E</span></a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')">Home</a></li>
+    <li><a onclick="showPage('shop')">Shop</a></li>
+    <li><a onclick="showPage('categories')">Categories</a></li>
+    <li><a onclick="showPage('about')">About</a></li>
+    <li><a onclick="showPage('contact')">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="search-bar-nav">
+      <span>🔍</span>
+      <input type="text" placeholder="Search products..." id="nav-search">
+    </div>
+    <button class="nav-btn" onclick="showPage('wishlist')" title="Wishlist">♡ <span style="font-size:.7rem;color:var(--text3)" id="wishlist-count-nav">0</span></button>
+    <button class="nav-btn" onclick="showPage('cart')" title="Cart">
+      🛒
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('auth')" title="Account">👤</button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');toggleMobileMenu()">Home</a>
+  <a onclick="showPage('shop');toggleMobileMenu()">Shop</a>
+  <a onclick="showPage('categories');toggleMobileMenu()">Categories</a>
+  <a onclick="showPage('wishlist');toggleMobileMenu()">Wishlist</a>
+  <a onclick="showPage('cart');toggleMobileMenu()">Cart</a>
+  <a onclick="showPage('about');toggleMobileMenu()">About</a>
+  <a onclick="showPage('contact');toggleMobileMenu()">Contact</a>
+  <a onclick="showPage('auth');toggleMobileMenu()">Login / Register</a>
+</div>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">✦ The Future of Luxury Shopping ✦</div>
+      <h1 class="hero-title">
+        Beyond<br>
+        <em>Ordinary</em><br>
+        <span class="outline">Fashion</span>
+      </h1>
+      <p class="hero-sub">Experience curated luxury from the world's most iconic brands. Where exclusivity meets effortless elegance.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('shop')">✦ Explore Collection</button>
+        <button class="btn-ghost" onclick="showPage('categories')">Browse Categories →</button>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track" id="marquee-track">
+      <div class="marquee-item"><span>✦</span> Men's Fashion</div>
+      <div class="marquee-item"><span>✦</span> Women's Fashion</div>
+      <div class="marquee-item"><span>✦</span> Luxury Watches</div>
+      <div class="marquee-item"><span>✦</span> Shoes & Sneakers</div>
+      <div class="marquee-item"><span>✦</span> Electronics</div>
+      <div class="marquee-item"><span>✦</span> Bags & Accessories</div>
+      <div class="marquee-item"><span>✦</span> Perfumes</div>
+      <div class="marquee-item"><span>✦</span> Hoodies</div>
+      <div class="marquee-item"><span>✦</span> Streetwear</div>
+      <div class="marquee-item"><span>✦</span> Jewelry</div>
+      <div class="marquee-item"><span>✦</span> Smart Gadgets</div>
+      <div class="marquee-item"><span>✦</span> Kids Collection</div>
+      <div class="marquee-item"><span>✦</span> Men's Fashion</div>
+      <div class="marquee-item"><span>✦</span> Women's Fashion</div>
+      <div class="marquee-item"><span>✦</span> Luxury Watches</div>
+      <div class="marquee-item"><span>✦</span> Shoes & Sneakers</div>
+      <div class="marquee-item"><span>✦</span> Electronics</div>
+      <div class="marquee-item"><span>✦</span> Bags & Accessories</div>
+      <div class="marquee-item"><span>✦</span> Perfumes</div>
+      <div class="marquee-item"><span>✦</span> Streetwear</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features-strip">
+    <div class="feature-item"><span class="feature-icon">🚀</span><div class="feature-text"><h4>Free Express Shipping</h4><p>On all orders above $200</p></div></div>
+    <div class="feature-item"><span class="feature-icon">🔒</span><div class="feature-text"><h4>Secure Payments</h4><p>256-bit SSL encryption</p></div></div>
+    <div class="feature-item"><span class="feature-icon">♻️</span><div class="feature-text"><h4>Easy Returns</h4><p>30-day hassle-free returns</p></div></div>
+    <div class="feature-item"><span class="feature-icon">💎</span><div class="feature-text"><h4>Authenticity Guaranteed</h4><p>100% genuine luxury products</p></div></div>
+    <div class="feature-item"><span class="feature-icon">🎁</span><div class="feature-text"><h4>Luxury Packaging</h4><p>Premium gift-ready boxes</p></div></div>
+  </div>
+
+  <!-- FEATURED BANNER SLIDER -->
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">✦ Curated for You</span>
+      <h2 class="section-title">Featured <em>Collections</em></h2>
+    </div>
+    <div class="banner-slider reveal">
+      <div class="banner-slides" id="banner-slides">
+        <div class="banner-slide">
+          <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1400&q=80" alt="Fashion Collection">
+          <div class="banner-content">
+            <div class="banner-tag">✦ New Arrival</div>
+            <h3 class="banner-title">Parisian Couture<br>Spring 2025</h3>
+            <p class="banner-sub">Timeless elegance redefined for the modern age</p>
+            <button class="btn-primary" onclick="showPage('shop')">Shop Now →</button>
+          </div>
+        </div>
+        <div class="banner-slide">
+          <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1400&q=80" alt="Luxury Watches">
+          <div class="banner-content">
+            <div class="banner-tag">✦ Limited Edition</div>
+            <h3 class="banner-title">Horology<br>Masterpieces</h3>
+            <p class="banner-sub">Timepieces that transcend generations</p>
+            <button class="btn-primary" onclick="filterAndShow('Luxury Watches')">Explore →</button>
+          </div>
+        </div>
+        <div class="banner-slide">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1400&q=80" alt="Sneakers">
+          <div class="banner-content">
+            <div class="banner-tag">✦ Trending Now</div>
+            <h3 class="banner-title">Street Luxury<br>Sneaker Edit</h3>
+            <p class="banner-sub">Where performance meets pure aesthetics</p>
+            <button class="btn-primary" onclick="filterAndShow('Shoes & Sneakers')">Shop Sneakers →</button>
+          </div>
+        </div>
+        <div class="banner-slide">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1400&q=80" alt="Luxury Store">
+          <div class="banner-content">
+            <div class="banner-tag">✦ Exclusive</div>
+            <h3 class="banner-title">The Luxury<br>Experience</h3>
+            <p class="banner-sub">Discover over 50,000 premium products</p>
+            <button class="btn-primary" onclick="showPage('shop')">Browse All →</button>
+          </div>
+        </div>
+      </div>
+      <div class="slider-arrows">
+        <button class="slider-arrow" onclick="slideBanner(-1)">‹</button>
+        <button class="slider-arrow" onclick="slideBanner(1)">›</button>
+      </div>
+      <div class="slider-dots" id="slider-dots">
+        <div class="slider-dot active" onclick="goToSlide(0)"></div>
+        <div class="slider-dot" onclick="goToSlide(1)"></div>
+        <div class="slider-dot" onclick="goToSlide(2)"></div>
+        <div class="slider-dot" onclick="goToSlide(3)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section" style="padding-top:0">
+    <div class="section-header reveal">
+      <span class="section-tag">✦ Explore</span>
+      <h2 class="section-title">Shop by <em>Category</em></h2>
+      <p class="section-sub">From haute couture to cutting-edge tech, discover every dimension of luxury</p>
+    </div>
+    <div class="categories-grid reveal" id="home-categories-grid"></div>
+  </section>
+
+  <!-- TRENDING PRODUCTS -->
+  <section class="section" style="padding-top:0">
+    <div class="section-header reveal">
+      <span class="section-tag">✦ Hot Right Now</span>
+      <h2 class="section-title">Trending <em>Products</em></h2>
+    </div>
+    <div class="products-grid reveal" id="trending-products"></div>
+    <div style="text-align:center;margin-top:3rem" class="reveal">
+      <button class="btn-ghost" onclick="showPage('shop')">View All Products →</button>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section class="section" style="padding-top:0;background:linear-gradient(180deg,transparent,rgba(201,168,76,.03),transparent)">
+    <div class="section-header reveal">
+      <span class="section-tag">✦ Customer Favorites</span>
+      <h2 class="section-title">Best <em>Sellers</em></h2>
+    </div>
+    <div class="products-grid reveal" id="bestseller-products"></div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="padding-top:0">
+    <div class="section-header reveal">
+      <span class="section-tag">✦ Client Stories</span>
+      <h2 class="section-title">What They <em>Say</em></h2>
+    </div>
+    <div class="testimonials-grid reveal">
+      <div class="testimonial-card tilt">
+        <div class="tilt-inner">
+          <p class="testimonial-text">The experience was absolutely flawless. Every detail from packaging to delivery screamed luxury. LUXE has completely changed how I shop for high-end fashion.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt="Sarah" class="author-avatar">
+            <div><div class="author-name">Sarah Mitchell</div><div class="author-loc">London, UK ⭐⭐⭐⭐⭐</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card tilt">
+        <div class="tilt-inner">
+          <p class="testimonial-text">Unparalleled curation. I found pieces I couldn't find anywhere else — and the authentication process gave me complete peace of mind. Truly world-class service.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="James" class="author-avatar">
+            <div><div class="author-name">James Okonkwo</div><div class="author-loc">Dubai, UAE ⭐⭐⭐⭐⭐</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card tilt">
+        <div class="tilt-inner">
+          <p class="testimonial-text">I've shopped at luxury boutiques worldwide and LUXE rivals them all. The user experience is impeccable, the products are genuine, and delivery is incredibly fast.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt="Amélie" class="author-avatar">
+            <div><div class="author-name">Amélie Dubois</div><div class="author-loc">Paris, France ⭐⭐⭐⭐⭐</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section" style="padding-top:0">
+    <div class="newsletter-section reveal">
+      <span class="section-tag">✦ Exclusive Access</span>
+      <h2 class="section-title" style="margin-bottom:.5rem">Join the Inner <em>Circle</em></h2>
+      <p style="color:var(--text2);max-width:450px;margin:0 auto;line-height:1.8">Get early access to new collections, exclusive member discounts, and invitations to private events.</p>
+      <div class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="your@email.com">
+        <button class="btn-primary" onclick="showToast('Welcome!','You\'re now part of the inner circle ✦')">Join Now ✦</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" onclick="showPage('home')" style="cursor:pointer">LUX<span style="color:var(--text);font-weight:300">E</span></a>
+        <p>The world's most exclusive luxury shopping destination. Curating the finest products from global fashion houses and independent artisans since 2018.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link">𝕏</a>
+          <a href="#" class="social-link">📸</a>
+          <a href="#" class="social-link">📘</a>
+          <a href="#" class="social-link">▶️</a>
+          <a href="#" class="social-link">📌</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a onclick="filterAndShow('Men Fashion')">Men Fashion</a></li>
+          <li><a onclick="filterAndShow('Women Fashion')">Women Fashion</a></li>
+          <li><a onclick="filterAndShow('Luxury Watches')">Luxury Watches</a></li>
+          <li><a onclick="filterAndShow('Shoes & Sneakers')">Shoes & Sneakers</a></li>
+          <li><a onclick="filterAndShow('Electronics')">Electronics</a></li>
+          <li><a onclick="filterAndShow('Jewelry')">Jewelry</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a>Size Guide</a></li>
+          <li><a>Shipping Info</a></li>
+          <li><a>Returns Policy</a></li>
+          <li><a>Track Your Order</a></li>
+          <li><a onclick="showPage('contact')">Contact Us</a></li>
+          <li><a>FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a onclick="showPage('about')">About LUXE</a></li>
+          <li><a>Press & Media</a></li>
+          <li><a>Careers</a></li>
+          <li><a>Sustainability</a></li>
+          <li><a>Privacy Policy</a></li>
+          <li><a>Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 LUXE. All rights reserved. Made with ✦ for connoisseurs of the extraordinary.</p>
+      <div class="payment-icons">
+        <span>VISA</span><span>MC</span><span>AMEX</span><span>PayPal</span><span>Apple Pay</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== SHOP PAGE ==================== -->
+<div class="page" id="page-shop">
+  <div class="page-header">
+    <span class="section-tag">✦ All Products</span>
+    <h1 class="section-title">The <em>Shop</em></h1>
+    <p style="color:var(--text2);margin-top:.5rem">Discover our complete luxury collection</p>
+  </div>
+  <div class="shop-layout">
+    <aside class="shop-sidebar" id="shop-sidebar">
+      <div class="sidebar-section">
+        <h3>Category</h3>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Men Fashion" class="cat-filter"> Men Fashion</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Women Fashion" class="cat-filter"> Women Fashion</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Kids Collection" class="cat-filter"> Kids Collection</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Luxury Watches" class="cat-filter"> Luxury Watches</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Shoes & Sneakers" class="cat-filter"> Shoes & Sneakers</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Electronics" class="cat-filter"> Electronics</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Bags & Accessories" class="cat-filter"> Bags & Accessories</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Perfumes" class="cat-filter"> Perfumes</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Hoodies" class="cat-filter"> Hoodies</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Streetwear" class="cat-filter"> Streetwear</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Jewelry" class="cat-filter"> Jewelry</label>
+        <label class="filter-option"><input type="checkbox" onchange="applyFilters()" value="Smart Gadgets" class="cat-filter"> Smart Gadgets</label>
+      </div>
+      <div class="sidebar-section">
+        <h3>Price Range</h3>
+        <div class="price-range">
+          <input type="range" min="0" max="5000" value="5000" id="price-filter" oninput="document.getElementById('price-val').textContent='$0 – $'+this.value;applyFilters()">
+        </div>
+        <p style="font-size:.8rem;color:var(--text2);margin-top:.5rem" id="price-val">$0 – $5000</p>
+      </div>
+      <div class="sidebar-section">
+        <h3>Rating</h3>
+        <label class="filter-option"><input type="checkbox" class="rating-filter" value="4" onchange="applyFilters()"> ★★★★★ 4.5+</label>
+        <label class="filter-option"><input type="checkbox" class="rating-filter" value="3" onchange="applyFilters()"> ★★★★☆ 3.5+</label>
+        <label class="filter-option"><input type="checkbox" class="rating-filter" value="0" onchange="applyFilters()"> All Ratings</label>
+      </div>
+      <div class="sidebar-section">
+        <h3>Availability</h3>
+        <label class="filter-option"><input type="checkbox" class="avail-filter" value="new" onchange="applyFilters()"> New Arrivals</label>
+        <label class="filter-option"><input type="checkbox" class="avail-filter" value="sale" onchange="applyFilters()"> On Sale</label>
+      </div>
+    </aside>
+    <main>
+      <div class="shop-header">
+        <p class="shop-count" id="shop-count">Showing all products</p>
+        <select class="sort-select" id="sort-select" onchange="applyFilters()">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="newest">Newest First</option>
+        </select>
+      </div>
+      <div class="filter-tags" id="filter-tags"></div>
+      <div class="products-grid" id="shop-products-grid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- ==================== CATEGORIES PAGE ==================== -->
+<div class="page" id="page-categories">
+  <div class="page-header">
+    <span class="section-tag">✦ Browse</span>
+    <h1 class="section-title">All <em>Categories</em></h1>
+  </div>
+  <div class="section">
+    <div class="categories-grid" id="all-categories-grid"></div>
+  </div>
+</div>
+
+<!-- ==================== PRODUCT DETAIL PAGE ==================== -->
+<div class="page" id="page-product">
+  <div style="max-width:1300px;margin:0 auto;padding:5rem 2rem 2rem">
+    <div class="detail-layout" id="detail-layout"></div>
+    <div class="section" style="padding:3rem 0 0">
+      <div class="section-header">
+        <span class="section-tag">✦ You May Also Like</span>
+        <h2 class="section-title">Related <em>Products</em></h2>
+      </div>
+      <div class="products-grid" id="related-products"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CART PAGE ==================== -->
+<div class="page" id="page-cart">
+  <div class="page-header">
+    <span class="section-tag">✦ Your Selection</span>
+    <h1 class="section-title">Shopping <em>Cart</em></h1>
+  </div>
+  <div class="cart-layout" id="cart-layout">
+    <div>
+      <div class="cart-items-list" id="cart-items"></div>
+    </div>
+    <div class="cart-summary" id="cart-summary-box">
+      <h3>Order Summary</h3>
+      <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+      <div class="summary-row"><span>Shipping</span><span style="color:#4ade80">Free</span></div>
+      <div class="summary-row"><span>Tax (8%)</span><span id="cart-tax">$0.00</span></div>
+      <div class="coupon-row">
+        <input type="text" class="coupon-input" placeholder="Coupon code">
+        <button class="btn-primary" style="padding:.6rem 1rem;font-size:.7rem" onclick="showToast('Applied!','Discount code applied successfully')">Apply</button>
+      </div>
+      <div class="summary-row total"><span>Total</span><span id="cart-total">$0.00</span></div>
+      <button class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem" onclick="showPage('checkout')">Proceed to Checkout →</button>
+      <button class="btn-ghost" style="width:100%;justify-content:center;margin-top:.8rem" onclick="showPage('shop')">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== WISHLIST PAGE ==================== -->
+<div class="page" id="page-wishlist">
+  <div class="page-header">
+    <span class="section-tag">✦ Saved Items</span>
+    <h1 class="section-title">My <em>Wishlist</em></h1>
+  </div>
+  <div class="section" style="padding-top:2rem">
+    <div class="wishlist-header">
+      <h2 style="color:var(--text2)" id="wishlist-count-text">0 items saved</h2>
+      <button class="btn-ghost" onclick="addAllWishlistToCart()" id="add-all-btn" style="display:none">Add All to Cart</button>
+    </div>
+    <div class="products-grid" id="wishlist-products"></div>
+    <div class="empty-state" id="wishlist-empty" style="display:none">
+      <div class="empty-icon">♡</div>
+      <h3>Your wishlist is empty</h3>
+      <p>Save products you love for later</p>
+      <button class="btn-primary" onclick="showPage('shop')">Start Shopping →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CHECKOUT PAGE ==================== -->
+<div class="page" id="page-checkout">
+  <div class="page-header">
+    <span class="section-tag">✦ Final Step</span>
+    <h1 class="section-title">Secure <em>Checkout</em></h1>
+  </div>
+  <div class="checkout-layout">
+    <div>
+      <div class="checkout-form">
+        <div class="form-section">
+          <h3>Contact Information</h3>
+          <div class="form-grid">
+            <div class="form-group"><label>First Name</label><input type="text" class="form-input" placeholder="John"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" class="form-input" placeholder="Doe"></div>
+            <div class="form-group form-full"><label>Email Address</label><input type="email" class="form-input" placeholder="john@example.com"></div>
+            <div class="form-group form-full"><label>Phone Number</label><input type="tel" class="form-input" placeholder="+1 (555) 000-0000"></div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>Shipping Address</h3>
+          <div class="form-grid">
+            <div class="form-group form-full"><label>Street Address</label><input type="text" class="form-input" placeholder="123 Luxury Avenue"></div>
+            <div class="form-group"><label>City</label><input type="text" class="form-input" placeholder="New York"></div>
+            <div class="form-group"><label>State</label><input type="text" class="form-input" placeholder="NY"></div>
+            <div class="form-group"><label>ZIP Code</label><input type="text" class="form-input" placeholder="10001"></div>
+            <div class="form-group form-full"><label>Country</label>
+              <select class="form-input"><option>United States</option><option>United Kingdom</option><option>France</option><option>UAE</option><option>Pakistan</option><option>Germany</option><option>Japan</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>Payment Method</h3>
+          <div class="payment-methods">
+            <div class="payment-method active" onclick="selectPayment(this)">💳 Credit Card</div>
+            <div class="payment-method" onclick="selectPayment(this)">📱 Apple Pay</div>
+            <div class="payment-method" onclick="selectPayment(this)">🅿️ PayPal</div>
+            <div class="payment-method" onclick="selectPayment(this)">₿ Crypto</div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group form-full"><label>Card Number</label><input type="text" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19"></div>
+            <div class="form-group"><label>Expiry Date</label><input type="text" class="form-input" placeholder="MM/YY" maxlength="5"></div>
+            <div class="form-group"><label>CVV</label><input type="text" class="form-input" placeholder="123" maxlength="4"></div>
+          </div>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;padding:1.1rem" onclick="placeOrder()">✦ Place Order Securely</button>
+      </div>
+    </div>
+    <div class="checkout-order-summary">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:1.5rem">Your Order</h3>
+      <div id="checkout-items"></div>
+      <div style="border-top:1px solid var(--border);margin-top:1rem;padding-top:1rem">
+        <div class="summary-row"><span>Subtotal</span><span id="checkout-subtotal">$0</span></div>
+        <div class="summary-row"><span>Shipping</span><span style="color:#4ade80">Free</span></div>
+        <div class="summary-row total"><span>Total</span><span id="checkout-total">$0</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== AUTH PAGE ==================== -->
+<div class="page" id="page-auth">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div style="text-align:center;margin-bottom:2rem">
+        <span class="nav-logo" style="font-size:1.5rem;cursor:default">LUX<span style="color:var(--text);font-weight:300">E</span></span>
+        <p style="color:var(--text3);font-size:.8rem;margin-top:.5rem">Your luxury journey begins here</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" onclick="switchAuthTab('register')">Create Account</button>
+      </div>
+      <div class="auth-form active" id="login-form">
+        <div class="form-group"><label>Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Password</label><input type="password" class="form-input" placeholder="••••••••"></div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="showToast('Welcome back!','Signed in successfully ✦');showPage('home')">Sign In →</button>
+        <div class="auth-divider">or continue with</div>
+        <div class="social-auth">
+          <button class="social-auth-btn" onclick="showToast('Welcome!','Signed in with Google')">🇬 Google</button>
+          <button class="social-auth-btn" onclick="showToast('Welcome!','Signed in with Apple')">🍎 Apple</button>
+        </div>
+        <p style="font-size:.75rem;color:var(--text3);text-align:center;margin-top:.5rem"><a style="color:var(--gold);cursor:pointer">Forgot password?</a></p>
+      </div>
+      <div class="auth-form" id="register-form">
+        <div class="form-group"><label>Full Name</label><input type="text" class="form-input" placeholder="John Doe"></div>
+        <div class="form-group"><label>Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Password</label><input type="password" class="form-input" placeholder="••••••••"></div>
+        <div class="form-group"><label>Confirm Password</label><input type="password" class="form-input" placeholder="••••••••"></div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="showToast('Account Created!','Welcome to the inner circle ✦');showPage('home')">Create Account ✦</button>
+        <div class="auth-divider">or</div>
+        <div class="social-auth">
+          <button class="social-auth-btn" onclick="showToast('Welcome!','Registered with Google')">🇬 Google</button>
+          <button class="social-auth-btn" onclick="showToast('Welcome!','Registered with Apple')">🍎 Apple</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(201,168,76,.12),transparent)"></div>
+    <div style="position:relative;z-index:2;text-align:center;padding:2rem">
+      <span class="section-tag" style="margin-bottom:1.5rem;display:block">✦ Our Story</span>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,7rem);font-weight:300;line-height:.9;margin-bottom:1.5rem">The Art of<br><em style="color:var(--gold)">Luxury</em></h1>
+      <p style="color:var(--text2);max-width:500px;margin:0 auto;line-height:1.9;font-size:1rem">Founded in 2018 with a singular vision: to democratize access to authentic luxury, without compromising on exclusivity.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="about-stats reveal">
+      <div class="stat-item"><span class="stat-num">50K+</span><span class="stat-label">Products</span></div>
+      <div class="stat-item"><span class="stat-num">200+</span><span class="stat-label">Brands</span></div>
+      <div class="stat-item"><span class="stat-num">85+</span><span class="stat-label">Countries</span></div>
+      <div class="stat-item"><span class="stat-num">2M+</span><span class="stat-label">Happy Clients</span></div>
+      <div class="stat-item"><span class="stat-num">99%</span><span class="stat-label">Satisfaction</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:6rem" class="reveal">
+      <div>
+        <span class="section-tag">✦ Our Mission</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;line-height:1.1;margin:1rem 0">Redefining the<br><em style="color:var(--gold)">Luxury Experience</em></h2>
+        <p style="color:var(--text2);line-height:1.9;margin-bottom:1rem">At LUXE, we believe luxury is not merely about price — it is about the intersection of craftsmanship, heritage, and desire. We curate products that represent the pinnacle of human creativity and skill.</p>
+        <p style="color:var(--text2);line-height:1.9;margin-bottom:2rem">Every product in our catalog undergoes rigorous authenticity verification. We partner directly with brands and authorized dealers to ensure you receive only the genuine article.</p>
+        <button class="btn-primary" onclick="showPage('shop')">Shop Our Collection →</button>
+      </div>
+      <div style="position:relative">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80" alt="LUXE Store" style="width:100%;border-radius:4px;border:1px solid var(--border)">
+        <div style="position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--bg2);border:1px solid var(--border2);border-radius:4px;padding:1.5rem;backdrop-filter:blur(10px)">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--gold);font-weight:300">7+</div>
+          <div style="font-family:'Syne',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--text3);text-transform:uppercase">Years of Excellence</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-header reveal">
+      <span class="section-tag">✦ The Team</span>
+      <h2 class="section-title">Meet the <em>Visionaries</em></h2>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="CEO" class="team-img">
+        <div class="team-name">Alexander Chen</div>
+        <div class="team-role">CEO & Founder</div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Creative Director" class="team-img">
+        <div class="team-name">Isabella Laurent</div>
+        <div class="team-role">Creative Director</div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="Head of Curation" class="team-img">
+        <div class="team-name">Marcus Williams</div>
+        <div class="team-role">Head of Curation</div>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="CTO" class="team-img">
+        <div class="team-name">Priya Sharma</div>
+        <div class="team-role">Chief Technology Officer</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="border-top:1px solid var(--border);padding-top:2rem">
+      <p style="color:var(--text3);font-size:.8rem">© 2025 LUXE. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div class="page" id="page-contact">
+  <div class="page-header">
+    <span class="section-tag">✦ Get in Touch</span>
+    <h1 class="section-title">Contact <em>Us</em></h1>
+  </div>
+  <div class="contact-grid section" style="padding-top:3rem">
+    <div class="contact-info reveal-left">
+      <span class="section-tag">✦ We're Here</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;line-height:1.1;margin:1rem 0">We'd love to<br><em style="color:var(--gold)">hear from you</em></h2>
+      <p style="color:var(--text2);line-height:1.9">Our concierge team is available 24/7 to assist with any questions, personal shopping requests, or styling consultations.</p>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="contact-icon">📧</div>
+          <div class="contact-method-info"><h4>Email</h4><p>concierge@luxe.com</p></div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">📞</div>
+          <div class="contact-method-info"><h4>Phone</h4><p>+1 (800) LUXE-001</p></div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">💬</div>
+          <div class="contact-method-info"><h4>Live Chat</h4><p>Available 24/7</p></div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">📍</div>
+          <div class="contact-method-info"><h4>Flagship Store</h4><p>5th Avenue, New York, NY 10001</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-card reveal-right">
+      <h3>Send a Message</h3>
+      <div class="contact-form">
+        <div class="form-group"><label>Your Name</label><input type="text" class="form-input" placeholder="Full Name"></div>
+        <div class="form-group"><label>Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Subject</label>
+          <select class="form-input"><option>General Inquiry</option><option>Personal Shopping</option><option>Order Support</option><option>Returns & Exchanges</option><option>Authentication</option><option>Partnership</option></select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea class="form-input contact-form textarea" placeholder="Tell us how we can help..." rows="4" style="resize:vertical"></textarea></div>
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="showToast('Message Sent!','Our concierge will respond within 2 hours ✦')">Send Message ✦</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom" style="border-top:1px solid var(--border);padding-top:2rem">
+      <p style="color:var(--text3);font-size:.8rem">© 2025 LUXE. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
